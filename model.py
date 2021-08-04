@@ -1,17 +1,16 @@
-from pydantic improt BaseModel
+from pydantic import BaseModel
 
 
-class user(BaseModel):
+class User(BaseModel):
 	user_id: str
 	user_name: str
 
 
-class bot(BaseModel):
-	model_id: str
-	model_name: str
-	NLU_path: str
+class Bot(BaseModel):
+	bot_id: str
+	bot_name: str
+	models_path: str
 	action_path: str
-	story_path: str
-	intent_path: str
-	entity_path: str
-	
+	data_path: str
+	tests_path: str
+	config_path: str
