@@ -1,8 +1,11 @@
 from fastapi import FastAPI, Request 
 import requests
 import subprocess
+from model import user, bot
+
 
 app = FastAPI() 
+
 
 @app.get('/')
 def read_root():
@@ -33,4 +36,4 @@ async def parse(message: str, message_id: str):
 @app.post('/start')
 async def start(user_id):
 	shellscript = subprocess.Popen(["run_botapi.sh"], stdin=subprocess.PIPE)
-	
+	return {"message": "install successfully!"}
