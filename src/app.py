@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request 
 import requests
 import subprocess
-from model import User, Bot
+from models import User, Bot
 
 
 app = FastAPI() 

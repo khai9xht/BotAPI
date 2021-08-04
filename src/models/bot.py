@@ -1,11 +1,5 @@
 from pydantic import BaseModel
 
-
-class User(BaseModel):
-	user_id: str
-	user_name: str
-
-
 class Bot(BaseModel):
 	bot_id: str
 	bot_name: str
