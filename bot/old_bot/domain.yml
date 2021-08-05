@@ -1,0 +1,74 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+# hoi thoai thuc te
+bot ask: your name ?
+user: i"m {username: hoang} 
+bot: hello {username}
+-> intent, slot set
+
+
+# kich ban
+bot: your name?
+user: I'm {name}
+slot_set:
+  dialog.name = name
+bot: hello {dialog.name}
+
+
+bot: your name?
+user: i'm Kien    # name: Kien
+dialog.name = Kien
+bot: hello Kien
+
+# actions.py
+
+# action greet
+if entity["name"] not None:
+  hello entity
+elif slot["name"] not None:
+  hello slot
+else:
+  hello
+
+
+user: toi la Kien # entity["name"] = Kien, (slot["name"] = entity["name"])
+bot: xin chao Kien # entity["name"]
+user: hoi?
+bot: tra loi?
+user: hoi?
+bot: traloi.
+user: tam biet
+bot: tam biet Kien # entity["name"] if not None else slot["name"]

@@ -1,0 +1,11 @@
+# utter_greet: 
+#   - xin chao {dialog.user.name}   # slot["dialog.user.name"]
+#   - xin chao
+#   - hello
+# utter_ask_name:
+#   - ten ban la gi?
+#   - what is your name?
+# utter_goodbye:
+#   - tam biet {dialog.user.name}
+#   - tam biet
+#   - goodbye
