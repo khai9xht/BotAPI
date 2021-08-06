@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 import requests
 import subprocess
 from models import User, Bot
-
+import routers
 
 app = FastAPI() 
 
@@ -24,16 +24,18 @@ def BotReply(user: str, user_ulter: str):
 
 @app.get('/parse')
 async def parse(message: str, message_id: str):
-    response = requests.post(
-            "http://192.168.50.17:5005/model/parse",
-            json = {
-                "text": message,
-                "message_id": nessage_id
-            }    
-        )
+	response = requests.post(
+		"http://192.168.50.17:5005/model/parse",
+		json = {
+			"text": message,
+			"message_id": nessage_id
+		}    
+	)
 	return response.json()
 
 @app.post('/start')
 async def start(user_id):
 	shellscript = subprocess.Popen(["run_botapi.sh"], stdin=subprocess.PIPE)
 	return {"message": "install successfully!"}
+
+app.include_router(routers.router)

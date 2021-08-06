@@ -1,1 +1,1 @@
-Bot_path = "./bot"
+Bot_path = "../bot"

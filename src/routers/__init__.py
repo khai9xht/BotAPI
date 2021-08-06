@@ -3,7 +3,7 @@ sys.path.append('./api')
 sys.path.append('..')
 
 from fastapi import APIRouter
-import bot
+from routers import bot
 
 
 router = APIRouter()
